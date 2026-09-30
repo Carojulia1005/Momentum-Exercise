@@ -1,0 +1,249 @@
+:root {
+  --glass: rgba(0, 0, 0, 0.28);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --dark: #1d2733;
+  --break: #9fe3b0;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html, body { height: 100%; margin: 0; }
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #fff;
+  background: var(--dark);
+  overflow: hidden;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Background (Feature 2) ---------- */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.background.ready { opacity: 1; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45));
+}
+
+/* ---------- Centre column ---------- */
+.center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 24px 140px;
+}
+
+/* ---------- Clock + greeting (Feature 1) ---------- */
+.clock {
+  font-size: clamp(4.5rem, 16vw, 11rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.greeting {
+  margin-top: 0.5rem;
+  font-size: clamp(1.6rem, 4.5vw, 3.2rem);
+  font-weight: 500;
+}
+
+.name {
+  font: inherit;
+  color: inherit;
+  text-shadow: inherit;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.name:hover, .name:focus-visible { border-bottom-color: rgba(255, 255, 255, 0.6); outline: none; }
+
+.name-form { margin-top: 1.2rem; }
+
+.prompt {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+  font-weight: 500;
+}
+
+.line-input {
+  width: min(90vw, 560px);
+  padding: 0.2rem 0.5rem;
+  font: inherit;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  color: #fff;
+  text-align: center;
+  text-shadow: inherit;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  outline: none;
+}
+.line-input:focus { border-bottom-color: #fff; }
+
+/* ---------- Daily focus (Feature 3) ---------- */
+.focus { margin-top: 3rem; }
+
+.focus-label {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  opacity: 0.9;
+}
+
+.focus-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.focus-row input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: #5cb85c;
+  cursor: pointer;
+}
+
+.focus-text { cursor: pointer; }
+.focus-text.done { text-decoration: line-through; opacity: 0.7; }
+
+.icon-btn {
+  font-size: 1.4em;
+  line-height: 1;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+.focus-row:hover .icon-btn, .icon-btn:focus-visible { opacity: 0.9; }
+
+.focus-message { margin: 0.6rem 0 0; font-size: 1.1rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  font: inherit;
+  font-size: 0.9rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn:hover { background: rgba(255, 255, 255, 0.28); }
+
+.btn-primary {
+  color: var(--dark);
+  text-shadow: none;
+  background: rgba(255, 255, 255, 0.9);
+}
+.btn-primary:hover { background: #fff; }
+
+.reset-bg {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- Focus timer (Feature 4) ---------- */
+.timer {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  min-width: 180px;
+  padding: 14px 20px;
+  text-align: center;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+.timer-mode {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.timer.is-break .timer-mode { color: var(--break); opacity: 1; }
+
+.timer-display {
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* ---------- Drag & drop hint + messages ---------- */
+.drop-hint {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 30, 40, 0.55);
+  pointer-events: none;
+}
+.drop-hint p {
+  margin: 0;
+  padding: 40px 60px;
+  font-size: 2rem;
+  border: 3px dashed rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+}
+
+.toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  z-index: 11;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+}
+
+/* ---------- Narrow windows ---------- */
+@media (max-width: 520px) {
+  .timer { right: 12px; bottom: 12px; min-width: 0; padding: 10px 14px; }
+  .timer-display { font-size: 2rem; }
+  .reset-bg { left: 12px; bottom: 12px; }
+}

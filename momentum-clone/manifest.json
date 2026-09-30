@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Momentum Clone",
+  "version": "1.0.0",
+  "description": "A calm, personal new tab page: clock, greeting, your own background, daily focus and a focus timer.",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": ["storage", "unlimitedStorage"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

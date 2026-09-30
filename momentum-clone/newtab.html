@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Tab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Feature 2: background image + overlay for readability -->
+  <div id="background" class="background"></div>
+  <div class="overlay"></div>
+
+  <main class="center">
+    <!-- Feature 1: clock + greeting -->
+    <div id="clock" class="clock">--:--</div>
+
+    <div id="greeting" class="greeting" hidden>
+      <span id="greeting-text">Hello</span>, <button id="name" class="name" type="button" title="Click to edit your name"></button>.
+    </div>
+
+    <form id="name-form" class="name-form" hidden>
+      <label for="name-input" class="prompt">What's your name?</label>
+      <input id="name-input" class="line-input" type="text" maxlength="40" autocomplete="off">
+    </form>
+
+    <!-- Feature 3: daily focus -->
+    <section id="focus" class="focus" hidden>
+      <form id="focus-form">
+        <label for="focus-input" class="prompt">What is your main focus for today?</label>
+        <input id="focus-input" class="line-input" type="text" maxlength="120" autocomplete="off">
+      </form>
+
+      <div id="focus-display" hidden>
+        <p class="focus-label">TODAY</p>
+        <div class="focus-row">
+          <input id="focus-done" type="checkbox" aria-label="Mark focus as done">
+          <span id="focus-text" class="focus-text" title="Click to edit"></span>
+          <button id="focus-delete" class="icon-btn" type="button" aria-label="Delete focus" title="Delete focus">&times;</button>
+        </div>
+        <p id="focus-message" class="focus-message" hidden>Nice work!</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Feature 2: reset background -->
+  <button id="reset-bg" class="btn reset-bg" type="button">Reset background</button>
+
+  <!-- Feature 4: focus timer -->
+  <aside id="timer" class="timer">
+    <div id="timer-mode" class="timer-mode">Focus</div>
+    <div id="timer-display" class="timer-display">25:00</div>
+    <div class="timer-controls">
+      <button id="timer-start" class="btn btn-primary" type="button">Start</button>
+      <button id="timer-reset" class="btn" type="button">Reset</button>
+    </div>
+  </aside>
+
+  <div id="drop-hint" class="drop-hint" hidden><p>Drop your image here</p></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Local Claude settings (test server config)
+.claude/
+
+# Personal photo, kept on this computer only
+momentum-clone/images/IMG_0652.jpg
